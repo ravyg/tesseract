@@ -245,7 +245,7 @@ with tf.Session(graph=graph) as session:
 #f_space.close()
 def write_vector_space_to_file(embeddings, labels):
     #pickle.dump(final_embeddings, open("word2vec_vector_space", "w"))
-  f_vector_space = open("w2vdata_supp8000.txt","w+")
+  f_vector_space = open("w2vdata_supp_YesNo_4000.txt","w+")
   features = []
   assert embeddings.shape[0] >= len(labels), 'More labels than embeddings'
   print('vectorwriting')

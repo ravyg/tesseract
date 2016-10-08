@@ -22,16 +22,26 @@ def mongo_connect():
     print('Error: Unable to Connect')
     return None
 
+coll_to_scrape = [
+"echinacea_without_no_yes", 
+"echinacea_overlap_yes", 
+"melatonin_without_no_yes", 
+"melatonin_overlap_yes", 
+"st_johns_wort_without_no_yes", 
+"st_johns_wort_overlap_yes", 
+"valerian_without_no_yes",
+"valerian_overlap_yes"]
+
 # Main Execution begins here.
 if __name__ == '__main__':
+  # Mongo DB scrapping.
   db = mongo_connect()
   cols = db.collection_names()
   cleaned_tweets = ""
   for c in cols:
-    
-    if c is not None and c == "melatonin_copy":
+    if c is not None and c in coll_to_scrape:
     #if c is not None and c == "echinacea_copy":  
-      text_file = open("cleaned_data/"+c+".txt", "w+")
+      text_file = open("data/cleaned_data/"+c+".txt", "w+")
       coll = db[c]
       tweets = coll.find()
       # Get time of execution.
