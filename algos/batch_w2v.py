@@ -29,7 +29,7 @@ def read_data(filename):
     data = tf.compat.as_str(f.read(f.namelist()[0])).split()
   return data
 
-dirpath = "cleaned_data/datazip/"
+dirpath = "cleaned_data/datazip/only_no"
 
 wordslist=[]
 supp_list = ['st johns wort', 'stjohns wort', 'stjohn s wort', 'st john s wort', 'stjohn swort', 'stjohnswort', 'st johnswort' ]
@@ -245,7 +245,7 @@ with tf.Session(graph=graph) as session:
 #f_space.close()
 def write_vector_space_to_file(embeddings, labels):
     #pickle.dump(final_embeddings, open("word2vec_vector_space", "w"))
-  f_vector_space = open("w2vdata_supp_YesNo_4000.txt","w+")
+  f_vector_space = open("w2vdata_supp_OnlyNo_4000.txt","w+")
   features = []
   assert embeddings.shape[0] >= len(labels), 'More labels than embeddings'
   print('vectorwriting')
