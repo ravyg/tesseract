@@ -29,7 +29,7 @@ def read_data(filename):
     data = tf.compat.as_str(f.read(f.namelist()[0])).split()
   return data
 
-dirpath = "cleaned_data/datazip/only_no"
+dirpath = "../data/cleaned_data/datazip/both/"
 
 wordslist=[]
 supp_list = ['st johns wort', 'stjohns wort', 'stjohn s wort', 'st john s wort', 'stjohn swort', 'stjohnswort', 'st johnswort' ]
@@ -49,7 +49,8 @@ if os.path.exists(dirpath):
   # Remove stopwords.
   filtered_words = [w for w in wordslist if not w in stopwords.words('english')]
   words = [i for i in filtered_words if len(i) > 2]
-  print('Data size %d' % len(words))   
+  print('Data size %d' % len(words))
+
 
 
 
@@ -74,7 +75,7 @@ if os.path.exists(dirpath):
 
 #vocabulary_size = 80000 ##correct entry
 #vocabulary_size =  10000 ## ricardo
-vocabulary_size =  4000 ## ravish
+vocabulary_size =  10000 ## ravish
 
 def build_dataset(words):
   count = [['UNK', -1]]
@@ -198,7 +199,7 @@ with graph.as_default(), tf.device('/cpu:0'):
     normalized_embeddings, valid_dataset)
   similarity = tf.matmul(valid_embeddings, tf.transpose(normalized_embeddings))
 
-num_steps = 100000
+num_steps = 500001
 
 #num_steps = 100001
 
@@ -245,7 +246,7 @@ with tf.Session(graph=graph) as session:
 #f_space.close()
 def write_vector_space_to_file(embeddings, labels):
     #pickle.dump(final_embeddings, open("word2vec_vector_space", "w"))
-  f_vector_space = open("w2vdata_supp_OnlyNo_4000.txt","w+")
+  f_vector_space = open("both_vectors_40000.txt","w+")
   features = []
   assert embeddings.shape[0] >= len(labels), 'More labels than embeddings'
   print('vectorwriting')

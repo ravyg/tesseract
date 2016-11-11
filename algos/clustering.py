@@ -23,7 +23,7 @@ sys.setdefaultencoding('utf-8')
 ######### ######### ######### ######### #########
 # Numpy Array from CSV Data File
 ######### ######### ######### ######### #########
-input_file = "w2vdata_supp1000.csv"
+input_file = "both_vectors_4000.csv"
 labels = np.genfromtxt(input_file, delimiter=',', usecols=0, dtype=str)
 data = np.genfromtxt(input_file, delimiter=',')[:,1:-1]
 
@@ -82,7 +82,7 @@ labels_cluster = lbl_vec_cluster[0:,[0,-1]]
 dim=3
 num_points = len(labels)
 # Write Results to csv
-np.savetxt('00_clusters_supp_' + str(num_points) + '_'+ str(cluster_count) +'_vectors_labels.csv', labels_cluster, delimiter=",", fmt="%s")
+np.savetxt('08_tagger_clusters' + str(num_points) + '_'+ str(cluster_count) +'.csv', labels_cluster, delimiter=",", fmt="%s")
 
 ######### ######### ######### ######### #########
 # TSNE - PCA

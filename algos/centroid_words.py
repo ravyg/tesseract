@@ -129,7 +129,8 @@ keywords['supplements'] = [
   "valium",
   "ambiatol",
   "kneipp",
-  "valeri"]
+  "valeri",
+  "biotin"]
 
 keywords['quantative'] = [
   "one",
